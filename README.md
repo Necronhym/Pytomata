@@ -72,6 +72,7 @@ Pytomata.Mouse.buttonUp(button)
 ```
 
 ### Keyboard Functions:
+
 ##### Press down keyboard key button
 ```
 Pytomata.Keyboard.buttonDown(button)
@@ -106,22 +107,27 @@ Pytomata.Keyboard.buttonUp(button)
 'command', 'option', 'optionleft'or 'optionright'
 ```
 
-### Image Functions:
-####Load an image from a pilepath and return it:
+### Image Functions: 
+
+#### Load an image from a pilepath and return it:
 ```
 Pythomata.Image.load(filepath)
 ```
+Returns the loaded images
+
 ##### Take a screenshot of an area on the screen:
 ```
 Pythomata.Image.screenshot(x,y,w,h)
 ```
 X, Y define top left coordinates, w, h are width and height respectively
+Returns a images
 
 ##### Crop an image:
 ```
 Pythomata.Image.crop(Image, x, y, w, h)
 ```
-X,Y define the top left coorddiantes, w, h are width and height respectivley
+X,Y define the top left coordinates, w, h are width and height respectivley
+Returns a cropped image
 
 ##### Shows and image in a window:
 ```
@@ -129,12 +135,75 @@ Pythomata.Image.show(Image)
 ```
 **The window waits for a keyboard interups. Clicking x to close it will lock the script in a loop. So use the keyboard to close it.
 
-##### Filtering:
+#### Filtering:
 
-##### Masking:
+Filtering is used to remove colors form an image.
+It has two methods, in fitering removing all the colors inside a threshold
+and out filtering, removing all the colors outside the filter thresold
 
-##### Locating:
+##### Filter image and remove all pixels outside of HSV paramaters:
+```
+Pytomata.Image.filterOut(Image, HL, HH, SL, SH, VL, VH)
+```
+Where HL and HH represent hue low cutoff point and hue hight cutoff point
+SL and SH represent saturation low and hight cutoff points
+VL and VH represent value low and high cutoff points
+All values go from 0 to 255
+Returns a filtered image
 
+##### Filter image and remove all pixels within HSV paramaters:
+Pytomata.Image.filterIn(Image, HL, HH, SL, SH, VL, VH)
+```
+Pytomata.Image.filterIn(Image, HL, HH, SL, SH, VL, VH)
+```
+Where HL and HH represent hue low cutoff point and hue hight cutoff point
+SL and SH represent saturation low and hight cutoff points
+VL and VH represent value low and high cutoff points
+All values go from 0 to 255
+Returns a filtered image
+
+#### Masking:
+
+Masking is used to remove parts of an image using a bit mask
+
+##### Create Alpha Bit mask:
+```
+Pytomata.Image.createMask(Image)
+```
+All values that are not 0 will be assumed as alpha 1
+Returns a mask images
+
+##### Apply Mask additive
+```
+Pytomata.Image.applyMaskAdd(Image, Maks)
+```
+Removes all values outisde of the masked area
+Returns an image with the mask applied
+
+##### Apply Mask subtractive
+```
+Pytomata.Image.applyMaskSub(Image, Maks)
+```
+Removes all values inside the mask
+Returns an image with the mask applied
+
+#### Locating:
+
+Location functions are used to locate templets or objcet coordinates on screen.
+
+###### Locate a tempet image inside a larger image:
+```
+Pytomata.Image.findTemplate(Image, Template, threshold = 0.8):
+```
+Templet is the image you are trying to find inside the larger Image
+threshold is the threshold for being considered as a match
+Returns X, Y coordinates of the matched center
+
+###### Finde the center of an object in an image:
+```
+Pytomata.Image.findObject(Image):
+```
+Returns X, Y coordinates of the objects center
 ### OCR:
 Process image to return a string:
 ```
