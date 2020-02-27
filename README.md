@@ -49,12 +49,12 @@ pip3 install pyautogui
 ## Usage:
 
 Pytomata hosts a diverse tool set of functions designed for responsive automation.
-All of these functions are housed in a simple to use python class devided in to sub classes.
+All of these functions are housed in a simple to use python class divided in to sub classes.
 Currently supported functions, and examples on how to use them include:
 
 ### Mouse Functions: 
 
-##### Move Mouse To X, Y coordiantes:
+##### Move Mouse To X, Y coordinates:
 ```
 Pytomata.Mouse.move(x, y)
 ```
@@ -109,7 +109,7 @@ Pytomata.Keyboard.buttonUp(button)
 
 ### Image Functions: 
 
-#### Load an image from a pilepath and return it:
+#### Load an image from a file path and return it:
 ```
 Pythomata.Image.load(filepath)
 ```
@@ -126,38 +126,38 @@ Returns a images
 ```
 Pythomata.Image.crop(Image, x, y, w, h)
 ```
-X,Y define the top left coordinates, w, h are width and height respectivley
+X,Y define the top left coordinates, w, h are width and height respectively
 Returns a cropped image
 
 ##### Shows and image in a window:
 ```
 Pythomata.Image.show(Image)
 ```
-**The window waits for a keyboard interups. Clicking x to close it will lock the script in a loop. So use the keyboard to close it.
+**The window waits for a keyboard interrupts. Clicking x to close it will lock the script in a loop. So use the keyboard to close it.
 
 #### Filtering:
 
 Filtering is used to remove colors form an image.
-It has two methods, in fitering removing all the colors inside a threshold
-and out filtering, removing all the colors outside the filter thresold
+It has two methods, in filtering removing all the colors inside a threshold
+and out filtering, removing all the colors outside the filter threshold
 
-##### Filter image and remove all pixels outside of HSV paramaters:
+##### Filter image and remove all pixels outside of HSV parameters:
 ```
 Pytomata.Image.filterOut(Image, HL, HH, SL, SH, VL, VH)
 ```
-Where HL and HH represent hue low cutoff point and hue hight cutoff point
-SL and SH represent saturation low and hight cutoff points
+Where HL and HH represent hue low cutoff point and hue high cutoff point
+SL and SH represent saturation low and high cutoff points
 VL and VH represent value low and high cutoff points
 All values go from 0 to 255
 Returns a filtered image
 
-##### Filter image and remove all pixels within HSV paramaters:
+##### Filter image and remove all pixels within HSV parameters:
 Pytomata.Image.filterIn(Image, HL, HH, SL, SH, VL, VH)
 ```
 Pytomata.Image.filterIn(Image, HL, HH, SL, SH, VL, VH)
 ```
-Where HL and HH represent hue low cutoff point and hue hight cutoff point
-SL and SH represent saturation low and hight cutoff points
+Where HL and HH represent hue low cutoff point and hue high cutoff point
+SL and SH represent saturation low and high cutoff points
 VL and VH represent value low and high cutoff points
 All values go from 0 to 255
 Returns a filtered image
@@ -177,10 +177,10 @@ Returns a mask images
 ```
 Pytomata.Image.applyMaskAdd(Image, Maks)
 ```
-Removes all values outisde of the masked area
+Removes all values outside of the masked area
 Returns an image with the mask applied
 
-##### Apply Mask subtractive
+##### Apply Mask subtraction
 ```
 Pytomata.Image.applyMaskSub(Image, Maks)
 ```
@@ -189,17 +189,17 @@ Returns an image with the mask applied
 
 #### Locating:
 
-Location functions are used to locate templets or objcet coordinates on screen.
+Location functions are used to locate templates or object coordinates on screen.
 
-###### Locate a tempet image inside a larger image:
+##### Locate a template image inside a larger image:
 ```
 Pytomata.Image.findTemplate(Image, Template, threshold = 0.8):
 ```
-Templet is the image you are trying to find inside the larger Image
+Template is the image you are trying to find inside the larger Image
 threshold is the threshold for being considered as a match
 Returns X, Y coordinates of the matched center
 
-###### Finde the center of an object in an image:
+##### Find the center of an object in an image:
 ```
 Pytomata.Image.findObject(Image):
 ```
