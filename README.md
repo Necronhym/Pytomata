@@ -25,7 +25,6 @@ You can use the following command to check the versions installed on your machin
 
 ```
 pip freeze
-
 ```
 If some of the version do not meet requierments you can use the following commands to install the dependancies:
 
