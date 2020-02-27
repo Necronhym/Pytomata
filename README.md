@@ -1,4 +1,4 @@
-# Automata
+# Pytomata
 
 Pythomata is a cross-platform scripting autoamtion platfrom.
 It uses for scripting OpenCV for image processing, object detection and filtering, tesseract-ocr for optical character recogrnition, and pyautogui for keyboard and mouse command simulation
