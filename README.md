@@ -66,7 +66,7 @@ Release mouse button at current mouse location:
 ```
 Pytomata.Mouse.buttonUp(button)
 ```
-Button variable must be:
+Button variable value can be:
 ```
 'left', 'middle' or 'right'
 ```
@@ -80,7 +80,7 @@ Release mouse keyboard key button:
 ```
 Pytomata.Keyboard.buttonUp(button)
 ```
-Button variable values must be:
+Button variable value can be:
 ```
 '\t', '\n', '\r', ' ', '!', '"', '#', '$', '%', '&', "'", '(',
 ')', '*', '+', ',', '-', '.', '/', '0', '1', '2', '3', '4', '5', '6', '7',
@@ -107,11 +107,38 @@ Button variable values must be:
 ```
 
 ### Image Functions:
+Load an image from a pilepath and return it:
+```
+Pythomata.Image.load(filepath)
+```
+Take a screenshot of an area on the screen:
+```
+Pythomata.Image.screenshot(x,y,w,h)
+```
+X, Y define top left coordinates, w, h are width and height respectively
+
+Crop an image:
+```
+Pythomata.Image.crop(Image, x, y, w, h)
+```
+X,Y define the top left coorddiantes, w, h are width and height respectivley
+
+Shows and image in a window:
+```
+Pythomata.Image.show(Image)
+```
+**The window waits for a keyboard interups. Clicking x to close it will lock the script in a loop. So use the keyboard to close it.
+
+#### Filtering
+
+#### Masking
+
+#### Locating
 
 ### OCR:
 Process image to return a string:
 ```
-Pytomata.OCR(Image)
+Pytomata.OCR.imageToText(Image)
 ```
 ## Authors:
 
