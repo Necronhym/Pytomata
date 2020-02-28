@@ -88,12 +88,12 @@ class Pytomata:
             return cv2.subtract(Image.astype(float),cv2.bitwise_not(Templet), dtype = cv2.CV_8UC1)
         def applyMaskSub(Image, Templet):
             return cv2.subtract(Image.astype(float), Templet, dtype = cv2.CV_8UC1)
-        def findTemplate(Image, Template, threshold = 0.8):
+        def findTemplate(Image, Template, Threshold = 0.8):
             Image= cv2.cvtColor(Image, cv2.COLOR_BGR2GRAY)
             Template= cv2.cvtColor(Template, cv2.COLOR_BGR2GRAY)
             tw,th= Template.shape[::1]
             res = cv2.matchTemplate(Image, Template, cv2.TM_CCOEFF_NORMED)
-            loc = numpy.where( res >= threshold )
+            loc = numpy.where( res >= Threshold )
             return loc[1][-1]+(tw/2),loc[0][-1]+(th/2)
         def findObject(Img):
             return cv2.boundingRect(cv2.findContours(cv2.cvtColor(Image.createMask(Img), cv2.COLOR_BGR2GRAY), 1, 2)[0][0])[0]+(cv2.boundingRect(cv2.findContours(cv2.cvtColor(Image.createMask(Img), cv2.COLOR_BGR2GRAY), 1, 2)[0][0])[2]/2), cv2.boundingRect(cv2.findContours(cv2.cvtColor(Image.createMask(Img), cv2.COLOR_BGR2GRAY), 1, 2)[0][0])[1]+(cv2.boundingRect(cv2.findContours(cv2.cvtColor(Image.createMask(Img), cv2.COLOR_BGR2GRAY), 1, 2)[0][0])[3]/2)

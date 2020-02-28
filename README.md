@@ -1,11 +1,11 @@
 # Pytomata
 
-Pythomata is a cross-platform scripting autoamtion platfrom.
-It uses for scripting OpenCV for image processing, object detection and filtering, tesseract-ocr for optical character recogrnition, and pyautogui for keyboard and mouse command simulation
+Pythomata is a cross-platform scripting automation platform.
+It uses Python 3 for scripting OpenCV for image processing, object detection and filtering, Tesseract-ocr for optical character recognition, and Pyautogui for keyboard and mouse command simulation.
 
 ## Getting Started:
 
-Simply download the repository, unzip it and use the pythomata.py file
+Simply download the repository, unzip it and use the pythomata.py file.
 
 Using git:
 ```
@@ -16,17 +16,17 @@ git clone https://github.com/Necronhym/Pytomata.git
 
 Pythomata requiers:
 
-Python3 v3.7.3
-pytesseract v0.1.3
-OpenCV v4.1.2.30
-PyAutoGUI v0.9.48
+Python3 v 3.7.3
+Pytesseract v 0.1.3
+OpenCV v 4.1.2.30
+PyAutoGUI v 0.9.48
 
 You can use the following command to check the versions installed on your machine with freeze:
 
 ```
 pip freeze
 ```
-If some of the version do not meet requierments you can use the following commands to install the dependancies:
+If some of the versions do not meet requirements you can use the following commands to install the dependencies:
 
 On Windows:
 ```
@@ -37,7 +37,7 @@ pip install tesseract
 pip install pyautogui 
 ```
 
-On GNU/Linux and macOS
+On GNU/Linux and macOS:
 ```
 pip3 install opencv-python
 
@@ -54,7 +54,7 @@ Currently supported functions, and examples on how to use them include:
 
 ### Mouse Functions: 
 
-##### Move Mouse To X, Y coordinates:
+##### Move mouse to X, Y coordinates:
 ```
 Pytomata.Mouse.move(x, y)
 ```
@@ -66,7 +66,7 @@ Pytomata.Mouse.buttonDown(button)
 ```
 Pytomata.Mouse.buttonUp(button)
 ```
-##### Button variable value can be:
+##### Button variable values can be:
 ```
 'left', 'middle' or 'right'
 ```
@@ -81,7 +81,7 @@ Pytomata.Keyboard.buttonDown(button)
 ```
 Pytomata.Keyboard.buttonUp(button)
 ```
-##### Button variable value can be:
+##### Button variable values can be:
 ```
 '\t', '\n', '\r', ' ', '!', '"', '#', '$', '%', '&', "'", '(',
 ')', '*', '+', ',', '-', '.', '/', '0', '1', '2', '3', '4', '5', '6', '7',
@@ -109,106 +109,107 @@ Pytomata.Keyboard.buttonUp(button)
 
 ### Image Functions: 
 
-#### Load an image from a file path and return it:
+#### Load an image from a file path:
 ```
 Pythomata.Image.load(filepath)
 ```
-Returns the loaded images
+Returns the loaded image.
 
 ##### Take a screenshot of an area on the screen:
 ```
 Pythomata.Image.screenshot(x,y,w,h)
 ```
-X, Y define top left coordinates, w, h are width and height respectively
-Returns a images
+X, Y define top left coordinates, w, h are width and height respectively.
+Returns an images.
 
 ##### Crop an image:
 ```
 Pythomata.Image.crop(Image, x, y, w, h)
 ```
-X,Y define the top left coordinates, w, h are width and height respectively
-Returns a cropped image
+X,Y define the top left coordinates, w, h are width and height respectively.
+Returns a cropped image.
 
 ##### Shows and image in a window:
 ```
 Pythomata.Image.show(Image)
 ```
-**The window waits for a keyboard interrupts. Clicking x to close it will lock the script in a loop. So use the keyboard to close it.
+**The window waits for a keyboard interrupt. Clicking x to close the window will lock the script in a loop. Use the keyboard to close it.
 
 #### Filtering:
 
-Filtering is used to remove colors form an image.
-It has two methods, in filtering removing all the colors inside a threshold
-and out filtering, removing all the colors outside the filter threshold
+Filtering is used to remove colors from an image.
+It has two methods:
+in filtering - removing all the colors inside the threshold;
+out filtering - removing all the colors outside the threshold.
 
 ##### Filter image and remove all pixels outside of HSV parameters:
 ```
 Pytomata.Image.filterOut(Image, HL, HH, SL, SH, VL, VH)
 ```
-Where HL and HH represent hue low cutoff point and hue high cutoff point
-SL and SH represent saturation low and high cutoff points
-VL and VH represent value low and high cutoff points
-All values go from 0 to 255
-Returns a filtered image
+HL and HH represent hue low cutoff point and hue high cutoff point.
+SL and SH represent saturation low and high cutoff points.
+VL and VH represent value low and high cutoff points.
+All values go from 0 to 255.
+Returns a filtered image.
 
 ##### Filter image and remove all pixels within HSV parameters:
-Pytomata.Image.filterIn(Image, HL, HH, SL, SH, VL, VH)
 ```
 Pytomata.Image.filterIn(Image, HL, HH, SL, SH, VL, VH)
 ```
-Where HL and HH represent hue low cutoff point and hue high cutoff point
-SL and SH represent saturation low and high cutoff points
-VL and VH represent value low and high cutoff points
-All values go from 0 to 255
-Returns a filtered image
+HL and HH represent hue low cutoff point and hue high cutoff point.
+SL and SH represent saturation low and high cutoff points.
+VL and VH represent value low and high cutoff points.
+All values go from 0 to 255.
+Returns a filtered image.
 
 #### Masking:
 
-Masking is used to remove parts of an image using a bit mask
+Masking is used to remove parts of an image using a bit mask.
 
 ##### Create Alpha Bit mask:
 ```
 Pytomata.Image.createMask(Image)
 ```
-All values that are not 0 will be assumed as alpha 1
-Returns a mask images
+All values that are not 0 will be assumed as alpha 1.
+Returns a mask image.
 
 ##### Apply Mask additive
 ```
 Pytomata.Image.applyMaskAdd(Image, Maks)
 ```
-Removes all values outside of the masked area
-Returns an image with the mask applied
+Removes all values outside of the masked area.
+Returns an image with the mask applied.
 
 ##### Apply Mask subtraction
 ```
 Pytomata.Image.applyMaskSub(Image, Maks)
 ```
-Removes all values inside the mask
-Returns an image with the mask applied
+Removes all values inside the mask.
+Returns an image with the mask applied.
 
 #### Locating:
 
-Location functions are used to locate templates or object coordinates on screen.
+Location functions are used to locate templates or object coordinates in an image.
 
 ##### Locate a template image inside a larger image:
 ```
-Pytomata.Image.findTemplate(Image, Template, threshold = 0.8):
+Pytomata.Image.findTemplate(Image, Template, Threshold = 0.8):
 ```
-Template is the image you are trying to find inside the larger Image
-threshold is the threshold for being considered as a match
-Returns X, Y coordinates of the matched center
+Template is the image you are trying to find inside the larger Image.
+Threshold is the threshold for being considered as a match.
+Returns X, Y coordinates of the center of the match.
 
 ##### Find the center of an object in an image:
 ```
 Pytomata.Image.findObject(Image):
 ```
-Returns X, Y coordinates of the objects center
+Returns X, Y coordinates of the objects center.
 ### OCR:
 Process image to return a string:
 ```
 Pytomata.OCR.imageToText(Image)
 ```
+Returns string.
 ## Authors:
 
 * **Necronhym (N3cr0)** - *Initial work* -
