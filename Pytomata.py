@@ -2,16 +2,16 @@ import pyautogui
 import numpy
 import cv2
 import pytesseract
-
+import time
 class Pytomata:
     #Mouse Commands:
     class Mouse:
         def move(x, y):
             #Input Checking:
-            if x > pyautogui.size[0]:
-                x = pyautogui.size[0]
-            if y > pyautogui.size[1]:
-                y = pyautogui.size[1]
+            if x > pyautogui.size()[0]:
+                x = pyautogui.size()[0]
+            if y > pyautogui.size()[1]:
+                y = pyautogui.size()[1]
             if x < 0:
                 x = 0
             if y < 0:
@@ -51,7 +51,7 @@ class Pytomata:
                 w = pyautogui.size()[0]-(x)
             if (y+h) > pyautogui.size()[1]:
                 h = pyautogui.size()[1]-(y)
-            return cv2.cvtColor(numpy.array(pyautogui.screenshot(region=(x, y, x+w, y+h))), cv2.COLOR_RGB2BGR)
+            return cv2.cvtColor(numpy.array(pyautogui.screenshot(region=(x, y, w, h))), cv2.COLOR_RGB2BGR)
         def load(fileLocation):
             return cv2.imread(fileLocation)
         # !Waits for keypress clicking X wont do it;
@@ -96,9 +96,14 @@ class Pytomata:
             loc = numpy.where( res >= Threshold )
             return loc[1][-1]+(tw/2),loc[0][-1]+(th/2)
         def findObject(Img):
-            return cv2.boundingRect(cv2.findContours(cv2.cvtColor(Image.createMask(Img), cv2.COLOR_BGR2GRAY), 1, 2)[0][0])[0]+(cv2.boundingRect(cv2.findContours(cv2.cvtColor(Image.createMask(Img), cv2.COLOR_BGR2GRAY), 1, 2)[0][0])[2]/2), cv2.boundingRect(cv2.findContours(cv2.cvtColor(Image.createMask(Img), cv2.COLOR_BGR2GRAY), 1, 2)[0][0])[1]+(cv2.boundingRect(cv2.findContours(cv2.cvtColor(Image.createMask(Img), cv2.COLOR_BGR2GRAY), 1, 2)[0][0])[3]/2)
+            try:
+                        x, y= cv2.boundingRect(cv2.findContours(cv2.cvtColor(Pytomata.Image.createMask(Img), cv2.COLOR_BGR2GRAY), 1, 2)[0][0])[0]+(cv2.boundingRect(cv2.findContours(cv2.cvtColor(Pytomata.Image.createMask(Img), cv2.COLOR_BGR2GRAY), 1, 2)[0][0])[2]/2), cv2.boundingRect(cv2.findContours(cv2.cvtColor(Pytomata.Image.createMask(Img), cv2.COLOR_BGR2GRAY), 1, 2)[0][0])[1]+(cv2.boundingRect(cv2.findContours(cv2.cvtColor(Pytomata.Image.createMask(Img), cv2.COLOR_BGR2GRAY), 1, 2)[0][0])[3]/2)
+            except:
+                        x,y = 0, 0
+            return x, y
     #Oprical Character Recognition
     #Done
     class OCR:
         def imageToText(Image):
             return pytesseract.image_to_string(Image)
+
